@@ -1,26 +1,266 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --background: rgba(0, 0, 51, 0.9);
+  --foreground: #ffffff;
+  --primary: #0070f3;
+  --primary-foreground: #ffffff;
+  --muted: rgba(13, 25, 65, 0.7);
+  --muted-foreground: #a3c2ff;
+  --border: rgba(0, 112, 243, 0.2);
+  --ring: #0070f3;
+  --input: rgba(13, 25, 65, 0.5);
+  --card: rgba(13, 25, 65, 0.4);
+  --card-foreground: #ffffff;
+  --accent: rgba(255, 8, 68, 0.2);
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --success: #10b981;
+  --success-foreground: #ffffff;
+  --radius: 0.5rem;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: rgba(0, 0, 51, 0.95);
+    --foreground: #ffffff;
+    --primary: #3b82f6;
+    --primary-foreground: #ffffff;
+    --muted: rgba(13, 25, 65, 0.8);
+    --muted-foreground: #c7d9ff;
+    --border: rgba(59, 130, 246, 0.3);
+    --ring: #3b82f6;
+    --input: rgba(13, 25, 65, 0.6);
+    --card: rgba(13, 25, 65, 0.5);
+    --card-foreground: #ffffff;
+    --accent: rgba(255, 8, 68, 0.3);
+    --accent-foreground: #ffffff;
+    --destructive: #ef4444;
+    --destructive-foreground: #ffffff;
+    --success: #10b981;
+    --success-foreground: #ffffff;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans, ui-sans-serif, system-ui, sans-serif);
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    line-height: 1.1;
+  }
+  h1 {
+    font-size: 2.25rem;
+  }
+  h2 {
+    font-size: 1.875rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+  }
+  h4 {
+    font-size: 1.25rem;
+  }
+  h5 {
+    font-size: 1.125rem;
+  }
+  h6 {
+    font-size: 1rem;
+  }
+}
+
+/* تنسيقات عامة للاتجاه RTL */
+html[dir="rtl"] * {
+  letter-spacing: 0;
+}
+
+/* تحسينات إضافية للغة العربية */
+html[dir="rtl"] {
+  /* ضبط التباعد في العناصر */
+  .space-x-reverse > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 1;
+  }
+  
+  /* تحسين محاذاة النص في النموذج */
+  input, textarea, select {
+    text-align: right;
+  }
+  
+  /* تحسين اتجاه الأيقونات */
+  .rtl-flip {
+    transform: scaleX(-1);
+  }
+  
+  /* تخصيص الحدود للتوافق مع RTL */
+  .rtl-border-r {
+    border-left-width: 1px;
+    border-right-width: 0;
+  }
+  
+  .rtl-border-l {
+    border-right-width: 1px;
+    border-left-width: 0;
+  }
+  
+  /* ترتيب العناصر المرنة */
+  .rtl-flex {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+}
+
+/* تخصيص زاوية الظلال لـ RTL */
+html[dir="rtl"] .shadow-lg {
+  box-shadow: -1px 1px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* قواعد لخطوط عربية أفضل */
+html[dir="rtl"] body {
+  font-feature-settings: "kern", "liga", "clig", "calt", "rlig";
+  text-rendering: optimizeLegibility;
+}
+
+/* تخصيص التمرير */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--muted);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 112, 243, 0.5);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 112, 243, 0.7);
+}
+
+/* تنسيقات البطاقات والعناصر */
+.card {
+  background-color: var(--card);
+  color: var(--card-foreground);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 8px 30px rgba(0, 112, 243, 0.3);
+  transform: translateY(-2px);
+}
+
+/* تنسيقات ومكونات معادة الاستخدام */
+@layer components {
+  .container {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    max-width: 80rem;
+  }
+  
+  @media (min-width: 640px) {
+    .container {
+      padding-right: 1.5rem;
+      padding-left: 1.5rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .container {
+      padding-right: 2rem;
+      padding-left: 2rem;
+    }
+  }
+  
+  .card {
+    background-color: var(--card);
+    color: var(--card-foreground);
+    border-radius: 0.5rem;
+    border-width: 1px;
+    border-color: var(--border);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .button-primary {
+    display: inline-flex;
+    height: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.375rem;
+    background-color: var(--primary);
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--primary-foreground);
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+  
+  .button-primary:hover {
+    background-color: rgba(0, 112, 243, 0.9);
+  }
+  
+  .button-primary:focus-visible {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px var(--ring);
+  }
+  
+  .button-primary:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  
+  .button-secondary {
+    display: inline-flex;
+    height: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.375rem;
+    border-width: 1px;
+    border-color: var(--border);
+    background-color: var(--background);
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--foreground);
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+  
+  .button-secondary:hover {
+    background-color: var(--muted);
+  }
+  
+  .button-secondary:focus-visible {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px var(--ring);
+  }
+  
+  .button-secondary:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
 }

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="300" viewBox="0 0 500 300" fill="none">
+  <rect width="500" height="300" rx="20" fill="#f5f5f5" />
+  <circle cx="250" cy="100" r="70" fill="#0070f3" opacity="0.2" />
+  <rect x="100" y="180" width="300" height="80" rx="10" fill="#0070f3" opacity="0.1" />
+  <path d="M150 100 L250 100 L200 50 Z" fill="#0070f3" opacity="0.5" />
+  <rect x="150" y="120" width="200" height="20" rx="5" fill="#0070f3" opacity="0.3" />
+  <rect x="180" y="150" width="140" height="20" rx="5" fill="#0070f3" opacity="0.3" />
+  <rect x="180" y="200" width="140" height="40" rx="20" fill="#0070f3" opacity="0.7" />
+  <text x="215" y="225" font-family="Arial" font-size="16" fill="#ffffff">اكتشف المزيد</text>
+</svg> 

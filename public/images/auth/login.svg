@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600" fill="none">
+  <rect width="600" height="600" rx="20" fill="#f5f5f5" />
+  <rect x="150" y="150" width="300" height="300" rx="15" fill="#ffffff" stroke="#0070f3" stroke-width="2" />
+  <rect x="180" y="210" width="240" height="40" rx="5" fill="#e5e5f7" />
+  <rect x="180" y="270" width="240" height="40" rx="5" fill="#e5e5f7" />
+  <rect x="180" y="340" width="120" height="40" rx="20" fill="#0070f3" />
+  <text x="200" y="365" font-family="Arial" font-size="14" fill="#ffffff">تسجيل الدخول</text>
+  <circle cx="300" cy="120" r="50" fill="#0070f3" opacity="0.2" />
+  <path d="M280 100 Q 300 80 320 100 Q 340 120 320 140 Q 300 160 280 140 Q 260 120 280 100" stroke="#0070f3" stroke-width="3" fill="#0070f3" opacity="0.3" />
+  <circle cx="300" cy="110" r="15" fill="#0070f3" />
+  <path d="M260 150 Q 300 180 340 150" stroke="#0070f3" stroke-width="3" fill="none" />
+  <text x="220" y="180" font-family="Arial" font-size="18" fill="#0070f3">تسجيل الدخول</text>
+</svg> 
